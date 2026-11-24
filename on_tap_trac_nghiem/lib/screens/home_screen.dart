@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import '../services/quiz_repository.dart';
 import 'topic_screen.dart';
 import 'practice_screen.dart';
+import 'exam_screen.dart';
+import 'statistics_screen.dart';
+import '../services/result_service.dart';
+import 'wrong_questions_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final QuizRepository quizRepository;
@@ -26,6 +30,42 @@ class _HomeScreenState extends State<HomeScreen> {
   DisplayLanguage _selectedLanguage = DisplayLanguage.bilingual;
   int _questionCount = 300;
   int _topicCount = 20;
+
+  void _openExamScreen() {  //hàm mở màn hình thi thử
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => ExamScreen(
+        quizRepository: widget.quizRepository,
+        initialLanguage: _selectedLanguage,
+      ),
+    ),
+  );
+}
+  void _openStatisticsScreen() {   //hàm mở màn hình thống kê
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => StatisticsScreen(
+        resultService: ResultService(),
+        quizRepository: widget.quizRepository,
+        initialLanguage: _selectedLanguage,
+      ),
+    ),
+  );
+}
+
+  void _openWrongQuestionsScreen() { //hàm mở màn hình câu hỏi sai
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => WrongQuestionsScreen(
+        quizRepository: widget.quizRepository,
+        initialLanguage: _selectedLanguage,
+      ),
+    ),
+  );
+}
 
   @override
   void initState() {
@@ -59,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
       case DisplayLanguage.en:
         return en;
       case DisplayLanguage.bilingual:
-        return bilingual ?? vi;
+        return bilingual ?? '$vi · $en';
     }
   }
 
@@ -72,26 +112,6 @@ class _HomeScreenState extends State<HomeScreen> {
       case DisplayLanguage.bilingual:
         return 'Song ngữ';
     }
-  }
-
-  void _showIntegrationNotice(String featureName) {
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          content: Text(
-            _text(
-              vi: 'Chức năng "$featureName" đang sẵn sàng để tích hợp.',
-              en: '"$featureName" is ready for module integration.',
-              bilingual: 'Chức năng "$featureName" đang sẵn sàng để tích hợp.',
-            ),
-          ),
-        ),
-      );
   }
 
   void _openQuickPractice() {
@@ -139,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 _text(
                   vi: 'HỌC TẬP & KIỂM TRA',
                   en: 'LEARN & PRACTICE',
-                  bilingual: 'HỌC TẬP & KIỂM TRA',
+                  bilingual: 'HỌC TẬP & KIỂM TRA · LEARN & PRACTICE',
                 ),
               ),
               const SizedBox(height: 12),
@@ -151,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 _text(
                   vi: 'ÔN TẬP & THEO DÕI',
                   en: 'REVIEW & INSIGHTS',
-                  bilingual: 'ÔN TẬP & THEO DÕI',
+                  bilingual: 'ÔN TẬP & THEO DÕI · REVIEW & INSIGHTS',
                 ),
               ),
               const SizedBox(height: 12),
@@ -396,7 +416,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: _text(
               vi: 'Câu hỏi',
               en: 'Questions',
-              bilingual: 'Câu hỏi',
+              bilingual: 'Câu hỏi · Questions',
             ),
           ),
         ),
@@ -408,7 +428,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: _text(
               vi: 'Chủ đề',
               en: 'Topics',
-              bilingual: 'Chủ đề',
+              bilingual: 'Chủ đề · Topics',
             ),
           ),
         ),
@@ -526,7 +546,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         _text(
                           vi: 'Luyện tập nhanh',
                           en: 'Quick Practice',
-                          bilingual: 'Luyện tập nhanh',
+                          bilingual: 'Luyện tập nhanh · Quick Practice', 
                         ),
                         style: const TextStyle(
                           fontSize: 16,
@@ -539,7 +559,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         _text(
                           vi: 'Làm câu hỏi kèm lời giải song ngữ ngay lập tức',
                           en: 'Practice questions with instant bilingual notes',
-                          bilingual: 'Quick Practice • Kèm lời giải song ngữ',
+                          bilingual: 'Làm câu hỏi kèm lời giải song ngữ ngay lập tức',
                         ),
                         style: const TextStyle(
                           fontSize: 13,
@@ -574,12 +594,12 @@ class _HomeScreenState extends State<HomeScreen> {
               title: _text(
                 vi: 'Chọn chủ đề',
                 en: 'Select Topic',
-                bilingual: 'Chọn chủ đề',
+                bilingual: 'Chọn chủ đề · Select Topic',
               ),
               subtitle: _text(
                 vi: '$_topicCount khối kiến thức',
                 en: '$_topicCount Flutter modules',
-                bilingual: 'Select Topic • $_topicCount khối',
+                bilingual: '$_topicCount khối kiến thức',
               ),
               onTap: _openTopicScreen,
             ),
@@ -591,16 +611,14 @@ class _HomeScreenState extends State<HomeScreen> {
               title: _text(
                 vi: 'Thi thử',
                 en: 'Mock Exam',
-                bilingual: 'Thi thử',
+                bilingual: 'Thi thử · Mock Exam',
               ),
               subtitle: _text(
                 vi: 'Đề thi giới hạn giờ',
                 en: 'Timed exam mode',
-                bilingual: 'Mock Exam • Tính giờ',
+                bilingual: 'Đề thi giới hạn giờ',
               ),
-              onTap: () => _showIntegrationNotice(
-                _text(vi: 'Thi thử', en: 'Mock Exam'),
-              ),
+             onTap: _openExamScreen,
             ),
           ),
         ],
@@ -687,44 +705,14 @@ class _HomeScreenState extends State<HomeScreen> {
               title: _text(
                 vi: 'Ôn tập câu trả lời sai',
                 en: 'Review Wrong Answers',
-                bilingual: 'Ôn tập câu trả lời sai',
+                bilingual: 'Ôn tập câu trả lời sai · Review Wrong Answers',
               ),
               subtitle: _text(
                 vi: 'Làm lại các câu bạn từng trả lời nhầm',
                 en: 'Practice questions you missed before',
-                bilingual: 'Review Wrong Answers',
+                bilingual: 'Làm lại các câu bạn từng trả lời nhầm',
               ),
-              onTap: () => _showIntegrationNotice(
-                _text(
-                  vi: 'Ôn tập câu trả lời sai',
-                  en: 'Review Wrong Answers',
-                ),
-              ),
-            ),
-            const Divider(
-              height: 1,
-              thickness: 1,
-              indent: 68,
-              color: _dividerColor,
-            ),
-            _buildReviewListTile(
-              icon: Icons.favorite_outline_rounded,
-              title: _text(
-                vi: 'Câu hỏi yêu thích',
-                en: 'Favorite Questions',
-                bilingual: 'Câu hỏi yêu thích',
-              ),
-              subtitle: _text(
-                vi: 'Xem lại các câu hỏi đã đánh dấu',
-                en: 'Access your bookmarked questions',
-                bilingual: 'Favorite Questions',
-              ),
-              onTap: () => _showIntegrationNotice(
-                _text(
-                  vi: 'Câu hỏi yêu thích',
-                  en: 'Favorite Questions',
-                ),
-              ),
+              onTap: _openWrongQuestionsScreen,//nút mở màn hình câu hỏi sai
             ),
             const Divider(
               height: 1,
@@ -737,19 +725,14 @@ class _HomeScreenState extends State<HomeScreen> {
               title: _text(
                 vi: 'Thống kê kết quả',
                 en: 'Result Statistics',
-                bilingual: 'Thống kê kết quả',
+                bilingual: 'Thống kê kết quả · Result Statistics',
               ),
               subtitle: _text(
                 vi: 'Xem tổng hợp kết quả theo từng chủ đề',
                 en: 'View results grouped by knowledge topic',
-                bilingual: 'Result Statistics',
+                bilingual: 'Xem tổng hợp kết quả theo từng chủ đề',
               ),
-              onTap: () => _showIntegrationNotice(
-                _text(
-                  vi: 'Thống kê kết quả',
-                  en: 'Result Statistics',
-                ),
-              ),
+              onTap: _openStatisticsScreen,//nút mở màn hình thống kê
             ),
           ],
         ),
