@@ -238,8 +238,8 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('QuizMaster'), findsOneWidget);
-      expect(find.text('Luyện tập nhanh'), findsOneWidget);
-      expect(find.text('Chọn chủ đề'), findsOneWidget);
+      expect(find.text('Luyện tập nhanh · Quick Practice'), findsOneWidget);
+      expect(find.text('Chọn chủ đề · Select Topic'), findsOneWidget);
       expect(find.text('3'), findsOneWidget);
       expect(find.text('2'), findsOneWidget);
 
@@ -258,7 +258,7 @@ void main() {
       await tester.pumpWidget(QuizMasterApp(quizRepository: repo));
       await tester.pumpAndSettle();
 
-      await tester.tap(find.text('Chọn chủ đề'));
+      await tester.tap(find.text('Chọn chủ đề · Select Topic'));
       await tester.pumpAndSettle();
 
       expect(find.text('Ngôn ngữ Dart'), findsOneWidget);
@@ -290,7 +290,7 @@ void main() {
       await tester.pumpWidget(QuizMasterApp(quizRepository: repo));
       await tester.pumpAndSettle();
 
-      await tester.tap(find.text('Chọn chủ đề'));
+      await tester.tap(find.text('Chọn chủ đề · Select Topic'));
       await tester.pumpAndSettle();
 
       // Giả lập Lỗi
@@ -324,7 +324,7 @@ void main() {
       await tester.pumpWidget(QuizMasterApp(quizRepository: repo));
       await tester.pumpAndSettle();
 
-      await tester.tap(find.text('Chọn chủ đề'));
+      await tester.tap(find.text('Chọn chủ đề · Select Topic'));
       await tester.pumpAndSettle();
 
       await tester.tap(find.text('Bố cục'));
@@ -353,7 +353,7 @@ void main() {
       await tester.pumpWidget(QuizMasterApp(quizRepository: repo));
       await tester.pumpAndSettle();
 
-      await tester.tap(find.text('Luyện tập nhanh'));
+      await tester.tap(find.text('Luyện tập nhanh · Quick Practice'));
       await tester.pumpAndSettle();
 
       expect(find.text('const double pi = 3.14;'), findsOneWidget);
