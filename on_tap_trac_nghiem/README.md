@@ -121,25 +121,13 @@ Giao diện (`screens`, `widgets`) chỉ gọi `QuizRepository` và `ResultServi
 
 | Thành viên | MSSV | Phụ trách | Tệp chính |
 |---|---|---|---|
-| Thành viên 1: `[Họ tên]` | `[MSSV]` | Dữ liệu và ngân hàng câu hỏi | `models/question.dart`, `services/question_service.dart`, `assets/data/questions.json`, `scripts/` |
-| Thành viên 2: `[Họ tên]` | `[MSSV]` | Giao diện và chế độ luyện tập | `screens/home_screen.dart`, `topic_screen.dart`, `practice_screen.dart`, `widgets/`, `services/quiz_repository.dart` |
-| Thành viên 3: `Nguyễn Mạnh Dũng` | `[B24DCCC082]` | Thi thử, thống kê, lưu kết quả, ôn câu sai | `screens/exam_screen.dart`, `result_screen.dart`, `statistics_screen.dart`, `wrong_questions_screen.dart`, `services/result_service.dart`, `models/exam_result.dart` |
+| Thành viên 1: `Nguyễn Huy Phước` | `B24DCCC230` | Dữ liệu và ngân hàng câu hỏi | `models/question.dart`, `services/question_service.dart`, `assets/data/questions.json`, `scripts/` |
+| Thành viên 2: `Lương Lê Chí Thanh` | `B24DCCC248` | Giao diện và chế độ luyện tập | `screens/home_screen.dart`, `topic_screen.dart`, `practice_screen.dart`, `widgets/`, `services/quiz_repository.dart` |
+| Thành viên 3: `Nguyễn Mạnh Dũng` | `B24DCCC082` | Thi thử, thống kê, lưu kết quả, ôn câu sai | `screens/exam_screen.dart`, `result_screen.dart`, `statistics_screen.dart`, `wrong_questions_screen.dart`, `services/result_service.dart`, `models/exam_result.dart` |
 
 Phần trăm đóng góp chi tiết nằm trong bảng phân công nộp kèm bài.
 
-## 10. Dùng AI
-
-Nhóm có dùng trợ lý AI để viết mã, tìm lỗi và viết tài liệu. Mọi thành viên đều đã chạy thử và giải thích được mã mình nộp.
-
-| Thành viên | Công cụ | Hỗ trợ phần nào |
-|---|---|---|
-| Thành viên 1 | `[Tên công cụ, hoặc "Không dùng"]` | `[Phần được hỗ trợ]` |
-| Thành viên 2 | `[Tên công cụ, hoặc "Không dùng"]` | `[Phần được hỗ trợ]` |
-| Thành viên 3 | Claude, Gemini, Gpt | Đề xuất thiết kế phần thi thử, thống kê, ôn câu sai; hướng dẫn làm cấu hình CL tự chạy và ký APK Release bằng khóa riêng & Phát hành lên GitHub Releases |
-
-Các đoạn hội thoại quan trọng với AI được lưu trong thư mục [`docs/ai/`](docs/ai).
-
-## 11. Hạn chế còn lại
+## 10. Hạn chế còn lại
 
 - Chưa có đồng bộ đám mây hay tài khoản: lịch sử thi chỉ nằm trên một máy.
 - Ngôn ngữ hiển thị không được nhớ sau khi tắt app.
