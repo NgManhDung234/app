@@ -127,6 +127,16 @@ Giao diện (`screens`, `widgets`) chỉ gọi `QuizRepository` và `ResultServi
 
 Phần trăm đóng góp chi tiết nằm trong bảng phân công nộp kèm bài.
 
+## 10. Ghi nhận sử dụng trợ lý AI
+
+Nhóm sử dụng trợ lý AI như công cụ hỗ trợ viết mã nguồn mẫu, phân tích cấu trúc dữ liệu, gỡ lỗi môi trường và biên soạn tài liệu. Toàn bộ mã nguồn được các thành viên trực tiếp chạy thử, kiểm tra đối chiếu trên thiết bị thật hoặc máy ảo và nắm rõ để giải trình khi vấn đáp. Các prompt tiêu biểu và nhật ký kiểm chứng được lưu tại thư mục [`docs/ai/`](docs/ai).
+
+| Thành viên | Công cụ AI | Nội dung hỗ trợ và kiểm chứng của sinh viên | Nhật ký chi tiết |
+|---|---|---|---|
+| Nguyễn Huy Phước (TV1) | Gemini | Phân tích cấu trúc tài liệu Word nguồn, viết và tinh chỉnh script `scripts/convert_to_json.py`, đề xuất model `Question` và `QuestionService`. Sinh viên trực tiếp chạy chuyển đổi và đối chiếu đủ 300 câu hỏi thuộc 20 khối kiến thức trong `assets/data/questions.json`. | [`docs/ai/tv1_phuoc_ai_notes.md`](docs/ai/tv1_phuoc_ai_notes.md) |
+| Lương Lê Chí Thanh (TV2) | Gemini | Thiết kế giao diện Material 3 cho `HomeScreen`, `TopicScreen`, `PracticeScreen` và các widget dùng lại (`QuestionCard`, `AnswerOption`). Xây dựng lớp cầu nối `QuizRepository` (tích hợp dữ liệu của TV1, hỗ trợ `customLoader`). Viết bộ 18 unit/widget test trong `test/widget_test.dart` và xử lý cấu hình `pubspec.yaml`. | [`docs/ai/tv2_thanh_ai_notes.md`](docs/ai/tv2_thanh_ai_notes.md) |
+| Nguyễn Mạnh Dũng (TV3) | ChatGPT, Gemini, Claude | Thiết kế model `ExamResult` và `ResultService` (lưu trữ offline qua `shared_preferences`). Xây dựng luồng thi thử tính giờ đếm ngược (`ExamScreen`), màn hình kết quả (`ResultScreen`), thống kê (`StatisticsScreen`) và ôn câu sai (`WrongQuestionsScreen`). Rà soát đồng bộ đa ngôn ngữ, xử lý lỗi tràn giao diện trên thiết bị thật. Thiết lập GitHub Actions CI, tạo keystore ký số và phát hành `app-release.apk` lên GitHub Releases. | [`docs/ai/tv3_dung_ai_notes.md`](docs/ai/tv3_dung_ai_notes.md) |
+
 ## 10. Hạn chế còn lại
 
 - Chưa có đồng bộ đám mây hay tài khoản: lịch sử thi chỉ nằm trên một máy.
