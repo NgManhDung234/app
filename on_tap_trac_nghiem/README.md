@@ -137,7 +137,7 @@ Nhóm sử dụng trợ lý AI như công cụ hỗ trợ viết mã nguồn m�
 | Lương Lê Chí Thanh (TV2) | Gemini | Thiết kế giao diện Material 3 cho `HomeScreen`, `TopicScreen`, `PracticeScreen` và các widget dùng lại (`QuestionCard`, `AnswerOption`). Xây dựng lớp cầu nối `QuizRepository` (tích hợp dữ liệu của TV1, hỗ trợ `customLoader`). Viết bộ 18 unit/widget test trong `test/widget_test.dart` và xử lý cấu hình `pubspec.yaml`. | [`docs/ai/tv2_thanh_ai_notes.md`](docs/ai/tv2_thanh_ai_notes.md) |
 | Nguyễn Mạnh Dũng (TV3) | ChatGPT, Gemini | Thiết kế model `ExamResult` và `ResultService` (lưu trữ offline qua `shared_preferences`). Xây dựng luồng thi thử tính giờ đếm ngược (`ExamScreen`), màn hình kết quả (`ResultScreen`), thống kê (`StatisticsScreen`) và ôn câu sai (`WrongQuestionsScreen`). Rà soát đồng bộ đa ngôn ngữ, xử lý lỗi tràn giao diện trên thiết bị thật. Thiết lập GitHub Actions CI, tạo keystore ký số và phát hành `app-release.apk` lên GitHub Releases. | [`docs/ai/tv3_dung_ai_notes.md`](docs/ai/tv3_dung_ai_notes.md) |
 
-## 10. Hạn chế còn lại
+## 11. Hạn chế còn lại
 
 - Chưa có đồng bộ đám mây hay tài khoản: lịch sử thi chỉ nằm trên một máy.
 - Ngôn ngữ hiển thị không được nhớ sau khi tắt app.
